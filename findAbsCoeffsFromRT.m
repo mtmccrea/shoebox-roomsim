@@ -22,7 +22,7 @@ alpha_walls = zeros(nBands,6);
 for nb=1:nBands
     rt60 = rt60_target(nb);
     fmin = @(alpha) abs(rt60 - getRTsabine(alpha, room, abs_wall_ratios));
-    [alpha, minval] = fminsearch(fmin, 0.0001);
+    [alpha, minval] = fminsearch(fmin, 0.000000001);
     rt60_true(nb) = rt60 + minval;
     alpha_walls(nb,:) = min(alpha*abs_wall_ratios,1);
 end
