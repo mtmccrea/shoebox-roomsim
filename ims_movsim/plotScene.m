@@ -27,6 +27,9 @@ if nMic==2
 elseif nMic>2
     tri = delaunay(rec_xyz(:,1), rec_xyz(:,2));
     hold on, h_tri = triplot(tri, rec_xyz(:,1), rec_xyz(:,2),'linestyle','--','color','k');
+elseif nMic==1 % quick fix for single-mic case
+    h_tri = line([rec_xyz(:,1), rec_xyz(:,1)],[rec_xyz(:,2),rec_xyz(:,2)], ...
+        'linestyle','--','color','k');
 end
 grid, axis equal
 xlabel('x (m)'), ylabel('y (m)')
