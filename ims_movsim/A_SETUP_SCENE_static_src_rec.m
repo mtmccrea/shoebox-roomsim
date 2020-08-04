@@ -49,15 +49,15 @@ src_sigs = src_sigs(:,1:numSources);
 %%%%%%%%%%% ROOM 
 switch roomType
     case 'anechoic' 
-        room = [8 6 2.5];
-        rt60 = [0.1 0.1 0.1 0.1 0.1 0.1]; % can't be 0, but the absorption coeffs will be 1 with this
+        room = [8 6 2.5];                   % (L,W,H)
+        rt60 = [0.1 0.1 0.1 0.1 0.1 0.1];   % can't be 0, but the absorption coeffs will be 1 with this
 
     case 'medium'  
-        room = [10 7 3];
+        room = [10 7 3];                    % (L,W,H)
         rt60 = [1.0 0.8 0.7 0.6 0.5 0.4].*0.666;
 
     case 'large' 
-        room = [28 22 8];
+        room = [28 22 8];                   % (L,W,H)
         rt60 = [1.6 1.7 1.6 1.3 1 0.8].*0.666;
 end
 
