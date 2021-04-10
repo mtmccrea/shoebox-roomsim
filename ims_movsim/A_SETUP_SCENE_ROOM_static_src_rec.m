@@ -1,4 +1,4 @@
-function [scene, src_sigs] = A_SETUP_SCENE_ROOM_static_src_rec(room, rt60, src_norm, rec_norm, Lsig, fs, path_out)
+function [scene, src_sigs] = A_SETUP_SCENE_ROOM_static_src_rec(room, rt60, src_norm, rec_norm, fs, path_out)
 
 % room:     room dimensions in meters [Length Width Height]
 % rt60:     rt60 by freq band
@@ -14,10 +14,6 @@ addpath(genpath('./EXTERNAL_LIBS'))
 
 % GLOBALS
 c = 343;
-numSources = size(src_norm, 1);
-
-noi_p = dsp.ColoredNoise('pink', 'SamplesPerFrame', Lsig, 'NumChannels', numSources);
-src_sigs = noi_p() .* 0.5;
 
 % % LOAD SAMPLES
 % [src_sigs, fs_src] = audioread(filepath);
