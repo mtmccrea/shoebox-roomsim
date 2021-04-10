@@ -31,10 +31,11 @@ end
 
 % render responses and apply filterbank to combine different decays at different bands
 rirs = zeros(L_tot, maxSH, nr, ns);
+
 for ns=1:nSrc
     for nr=1:nRec
         disp('')
-        disp(['Rendering echogram: Source ' num2str(ns) ' - Receiver ' num2str(nr)])
+        fprintf("Rendering echogram: Source %d - Receiver %d  ", ns, nr)
         nSH = size(echograms(ns,nr,1).value,2);        
         tempIR = zeros(L_rir, nSH, nBands);
         for nb=1:nBands
