@@ -6,7 +6,7 @@ function rir_full = filter_rir(rir, f_center, fs)
 % Archontis Politis, archontis.politis@aalto.fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     nBands = size(rir,2);
 
     if length(f_center) ~= nBands
@@ -26,7 +26,8 @@ function rir_full = filter_rir(rir, f_center, fs)
                 wl = fl/(fs/2);
                 wh = fh/(fs/2);
                 w = [wl wh];
-                filters(:,i) = fir1(order, w, 'bandpass');
+                filters(:,i) = fir1(order, w, 'bandpass'); % original
+%               filters(:,i) = fir1(order, wh, 'low'); % mtm changed, but creates artifacts, needs a closer look...
             elseif i == nBands
                 fl = sqrt(f_center(i)*f_center(i-1));
                 w = fl/(fs/2);
